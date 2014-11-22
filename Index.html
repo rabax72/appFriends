@@ -11,22 +11,44 @@
 </head>
 <body>
 
-<div data-role="page">
+<div data-role="page" id="main">
 
 	<div data-role="header">
 		<h1>App Friends</h1>
 	</div><!-- /header -->
 
 	<div role="main" class="ui-content">
+		<ul data-role="listview" data-inset="true">
+			<li><a href="#calendario" data-icon="grid" data-theme="b">Calendario Chiesi 2014/2015</a></li>
+			<li><a href="#news" data-icon="info" data-theme="b">News Friends</a></li>
+		</ul>
+	</div>
+
+	<div data-role="footer">
+		<h4>Calendario 2014/2015</h4>
+	</div><!-- /footer -->
+</div>
+
+<div data-role="page" id="calendario">
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#main" data-icon="home">Home</a></li>
+		</ul>	
+	</div>
+	<div data-role="header">
+		<h1>Calendario Friends 2014/2015</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
 		
-		<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=fe6ik6048faqoog25eimn09b10%40group.calendar.google.com&amp;color=%231B887A&amp;ctz=Europe%2FRome" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+		<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=fe6ik6048faqoog25eimn09b10%40group.calendar.google.com&amp;color=%231B887A&amp;ctz=Europe%2FRome" style=" border-width:0 " width="400" height="300" frameborder="0" scrolling="no"></iframe>
 		
 	</div><!-- /content -->
 
 	<div data-role="footer">
 		<h4>Calendario 2014/2015</h4>
 	</div><!-- /footer -->
-</div><!-- /page -->
+</div>
 
 </body>
 </html>
