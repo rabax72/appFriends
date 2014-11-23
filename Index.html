@@ -27,7 +27,7 @@
                     data: JSON.stringify({  }),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    beforeSend: function () { $.mobile.loading('show'); }, //Show spinner
+                    beforeSend: function () {$(".notizie").html('loading...'); $.mobile.loading('show'); }, //Show spinner
                     complete: function () { $.mobile.loading('hide'); }, //Hide spinner
                     // code to run if the request succeeds;
                     // the response is passed to the function
