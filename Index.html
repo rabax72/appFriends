@@ -8,6 +8,68 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#vaiAlleNews").click(function () {
+                console.log("click!");
+                $.ajax({
+                    // the URL for the request
+                    url: "http://giacomorabaglia.com/apps/webservices/wsmessaggi.asmx/GetElencoMessaggi",
+                    //url: "wsmessaggi.asmx/GetElencoMessaggi",
+                    // the data to send (will be converted to a query string)
+                    //data: {},
+
+                    // whether this is a POST or GET request
+                    type: "POST",
+                    async: true,
+                    // the type of data we expect back
+                    data: JSON.stringify({  }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: function () { $.mobile.loading('show'); }, //Show spinner
+                    complete: function () { $.mobile.loading('hide'); }, //Hide spinner
+                    // code to run if the request succeeds;
+                    // the response is passed to the function
+                    success: function (data) {
+                        //$("<h1/>").text(json.titolo).appendTo("body");
+                        //$("<div class=\"content\"/>").html(json.html).appendTo("body");
+                        console.log('successo');
+                        console.log(data.d);
+                        var risultato = data.d;
+                        var risultati = "";
+                        for (var i = 0; i < risultato.length; i++) {
+                            risultati += "Titolo: " + risultato[i].Titolo + "<br>";
+                            risultati += "Abstract: " + risultato[i].Abstract + "<br>";
+                            risultati += "Testo: " + risultato[i].Testo + "<br>";
+                        }
+                        $(".notizie").html(risultati);
+                    },
+
+                    // code to run if the request fails; the raw request and
+                    // status codes are passed to the function
+                    error: function (xhr, status, errorThrown) {
+                        //alert("Sorry, there was a problem!");
+                        console.log("Error: " + errorThrown);
+                        console.log("Status: " + status);
+                        console.dir(xhr);
+                    },
+
+                    // code to run regardless of success or failure
+                    //complete: function (ritorno) {
+                    //    // alert("The request is complete!");
+                    //    console.log('completo');
+                    //    console.log(ritorno[0]);
+                    //}
+                });
+
+            });
+        });
+
+        
+
+    </script>
+
 </head>
 <body>
 
@@ -20,7 +82,7 @@
 	<div role="main" class="ui-content">
 		<ul data-role="listview" data-inset="true">
 			<li><a href="#calendario" data-icon="grid" data-theme="b">Calendario Chiesi 2014/2015</a></li>
-			<li><a href="#news" data-icon="info" data-theme="b">News Friends</a></li>
+			<li><a href="#news" data-icon="info" data-theme="b" id="vaiAlleNews">News Friends</a></li>
 		</ul>
 	</div>
 </div>
@@ -37,7 +99,7 @@
 
 	<div role="main" class="ui-content">
 		
-		<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=fe6ik6048faqoog25eimn09b10%40group.calendar.google.com&amp;color=%231B887A&amp;ctz=Europe%2FRome" style=" border-width:0 " width="600" height="450" frameborder="0" scrolling="true"></iframe>
+		<!--<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=fe6ik6048faqoog25eimn09b10%40group.calendar.google.com&amp;color=%231B887A&amp;ctz=Europe%2FRome" style=" border-width:0 " width="600" height="450" frameborder="0" scrolling="true"></iframe>-->
 		
 	</div><!-- /content -->
 
@@ -57,6 +119,7 @@
 	</div>
 	<div role="main" class="ui-content">
 		Benvenuti nella nuova App Friends
+        <div class="notizie"></div>
 	</div>
 </div>
 
