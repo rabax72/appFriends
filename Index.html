@@ -37,12 +37,15 @@
                         //console.log('successo');
                         //console.log(data.d);
                         var risultato = data.d;
-                        var risultati = "";
+                        var risultati = "<div><ul>";
                         for (var i = 0; i < risultato.length; i++) {
-                            risultati += "Titolo: " + risultato[i].Titolo + "<br>";
-                            risultati += "Abstract: " + risultato[i].Abstract + "<br>";
-                            risultati += "Testo: " + risultato[i].Testo + "<br>";
+                            risultati += "<li>";	
+                            risultati += "<b>Titolo:</b> " + risultato[i].Titolo + "<br>";
+                            risultati += "<b>Abstract:</b> " + risultato[i].Abstract + "<br>";
+                            risultati += "<b>Testo:</b> " + risultato[i].Testo + "<br>";
+                            risultati += "</li>"
                         }
+                        risultati += "</ul></div>";
                         $(".notizie").html(risultati);
                     },
 
@@ -100,7 +103,7 @@
 
 	<div role="main" class="ui-content">
 		
-		<!--<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=fe6ik6048faqoog25eimn09b10%40group.calendar.google.com&amp;color=%231B887A&amp;ctz=Europe%2FRome" style=" border-width:0 " width="600" height="450" frameborder="0" scrolling="true"></iframe>-->
+		<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=fe6ik6048faqoog25eimn09b10%40group.calendar.google.com&amp;color=%231B887A&amp;ctz=Europe%2FRome" style=" border-width:0 " width="600" height="450" frameborder="0" scrolling="true"></iframe>
 		
 	</div><!-- /content -->
 
