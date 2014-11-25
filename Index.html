@@ -12,10 +12,10 @@
     <script>
         $(function () {
             $("#vaiAlleNews").click(function () {
-                console.log("click!");
+                //console.log("click!");
                 $.ajax({
                     // the URL for the request
-                    url: "http://giacomorabaglia.com/apps/webservices/wsmessaggi.asmx/GetElencoMessaggi",
+                    url: "http://www.giacomorabaglia.com/apps/webservices/wsmessaggi.asmx/GetElencoMessaggi",
                     //url: "wsmessaggi.asmx/GetElencoMessaggi",
                     // the data to send (will be converted to a query string)
                     //data: {},
@@ -27,15 +27,15 @@
                     data: JSON.stringify({  }),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    beforeSend: function () {$(".notizie").html('loading...'); $.mobile.loading('show'); }, //Show spinner
+                    beforeSend: function () { $.mobile.loading('show'); }, //Show spinner
                     complete: function () { $.mobile.loading('hide'); }, //Hide spinner
                     // code to run if the request succeeds;
                     // the response is passed to the function
                     success: function (data) {
                         //$("<h1/>").text(json.titolo).appendTo("body");
                         //$("<div class=\"content\"/>").html(json.html).appendTo("body");
-                        console.log('successo');
-                        console.log(data.d);
+                        //console.log('successo');
+                        //console.log(data.d);
                         var risultato = data.d;
                         var risultati = "";
                         for (var i = 0; i < risultato.length; i++) {
@@ -53,6 +53,7 @@
                         console.log("Error: " + errorThrown);
                         console.log("Status: " + status);
                         console.dir(xhr);
+                        $(".notizie").html("Error: " + errorThrown);
                     },
 
                     // code to run regardless of success or failure
@@ -76,7 +77,7 @@
 <div data-role="page" id="main">
 
 	<div data-role="header">
-		<h1>App Friends 0.9.1</h1>
+		<h1>App Friends</h1>
 	</div><!-- /header -->
 
 	<div role="main" class="ui-content">
@@ -99,7 +100,7 @@
 
 	<div role="main" class="ui-content">
 		
-		<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=fe6ik6048faqoog25eimn09b10%40group.calendar.google.com&amp;color=%231B887A&amp;ctz=Europe%2FRome" style=" border-width:0 " width="600" height="450" frameborder="0" scrolling="true"></iframe>
+		<!--<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=fe6ik6048faqoog25eimn09b10%40group.calendar.google.com&amp;color=%231B887A&amp;ctz=Europe%2FRome" style=" border-width:0 " width="600" height="450" frameborder="0" scrolling="true"></iframe>-->
 		
 	</div><!-- /content -->
 
